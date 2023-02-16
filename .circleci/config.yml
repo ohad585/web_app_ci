@@ -8,5 +8,5 @@ jobs:
       - run:
           name: Installing dependencies
           command: |
-            ls
+            ls -al
             echo " files "
