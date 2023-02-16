@@ -10,7 +10,7 @@ pipeline {
             steps {
                 dir('backend') {
                     sh 'ls'
-                    sh 'npm install' 
+                    sh 'npm install --force' 
                 }
             }
         }
