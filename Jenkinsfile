@@ -6,20 +6,24 @@ pipeline {
         }
     }
     stages {
-        dir('backend'){
-            stage('Build Backend') { 
-                steps {
+        stage('Build Backend') { 
+            steps {
+                dir('backend') {
                     sh 'ls'
                     sh 'npm install' 
                 }
             }
-            stage('Test  Backend') {
-                steps {
+        }
+        stage('Test  Backend') {
+            steps {
+                dir('backend'){
                     sh './jenkins/scripts/test.sh'
                 }
             }
-            stage('Deliver  Backend') { 
-                steps {
+        }
+        stage('Deliver  Backend') { 
+            steps {
+                dir('backend'){
                     sh './jenkins/scripts/deliver.sh' 
                     input message: 'Finished using the web site? (Click "Proceed" to continue)' 
                     sh './jenkins/scripts/kill.sh' 
