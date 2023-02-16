@@ -6,12 +6,24 @@ pipeline {
         }
     }
     stages {
-        stage('Build') { 
+        stage('Build Frontend') { 
             steps {
                 dir('frontend') {
                     sh 'ls'
                     sh 'npm install' 
                 }
+            }
+        }
+        stage('Test  Frontend') {
+            steps {
+                sh './jenkins/scripts/test.sh'
+            }
+        }
+        stage('Deliver  Frontend') { 
+            steps {
+                sh './jenkins/scripts/deliver.sh' 
+                input message: 'Finished using the web site? (Click "Proceed" to continue)' 
+                sh './jenkins/scripts/kill.sh' 
             }
         }
     }
