@@ -10,13 +10,14 @@ pipeline {
             steps {
                 dir('backend') {
                     sh 'ls'
-                    sh 'npm install --force' 
+                    sh 'npm install' 
                 }
             }
         }
         stage('Test  Backend') {
             steps {
                 dir('backend'){
+                    sh "chmod +x -R ./jenkins/scripts/*.sh"
                     sh './jenkins/scripts/test.sh'
                 }
             }
