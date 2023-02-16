@@ -5,6 +5,7 @@ jobs:
       - image: node:alpine
 
     steps:
+      - checkout
       - run:
           name: Installing dependencies
           command: |
