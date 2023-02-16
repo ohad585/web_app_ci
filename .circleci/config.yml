@@ -8,7 +8,7 @@ jobs:
       - run:
           name: Installing dependencies
           command: |
-            cd frontend
+            cd frontend/
             ls
             npm install
             npm run start
