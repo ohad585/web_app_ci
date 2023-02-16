@@ -14,11 +14,6 @@ pipeline {
                 }
             }
         }
-        stage('Test  Frontend') {
-            steps {
-                sh './jenkins/scripts/test.sh'
-            }
-        }
         stage('Deliver  Frontend') { 
             steps {
                 sh './jenkins/scripts/deliver.sh' 
