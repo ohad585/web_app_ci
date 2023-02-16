@@ -11,3 +11,6 @@ jobs:
           command: |
             ls -al
             echo " files "
+            cd frontend/
+            npm install
+            npm run start
