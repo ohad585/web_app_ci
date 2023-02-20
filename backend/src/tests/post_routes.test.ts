@@ -58,7 +58,7 @@ describe("This is Post API test", () => {
       .post("/post")
       .set({ authorization: "barer " + accessToken })
       .send({
-        message: message,
+        text: message,
         sender: sender,
       });
     expect(response.statusCode).toEqual(200);
@@ -78,7 +78,7 @@ describe("This is Post API test", () => {
       .post("/post")
       .set({ authorization: "barer " + accessToken })
       .send({
-        message: message,
+        test: message,
         sender: sender,
       });
     expect(response.statusCode).not.toEqual(200);

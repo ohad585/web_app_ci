@@ -71,7 +71,7 @@ export const createNewPost = async (req: Request | CtrlReq, res: Response | Ctrl
     
     //send notification to all other users
     //broadcastPostMessage({ sender: sender, message: req.body.message, _id: post._id})
-    res.status(200).send({ sender: sender, message: req.body.message, _id: post._id });
+    res.status(200).send({ sender: sender, message: req.body.text, _id: post._id });
   } catch (err) {
     res.status(400).send({
       err: err.message,
