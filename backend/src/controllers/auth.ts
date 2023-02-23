@@ -94,7 +94,7 @@ import { RequestInfo, RequestInit } from 'node-fetch';
           .status(StatusCodes.BAD_REQUEST)
           .send({ error: "wrong email or password" });
       }
-      console.log("Found user "+user.email+" "+user.passowrd);
+      console.log("Found user "+user.email+" "+user.password);
       
       const match = await bcrypt.compare(password, user.password);
       if (!match) {
