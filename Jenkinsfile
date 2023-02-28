@@ -1,10 +1,5 @@
 pipeline {
-    agent {
-        docker {
-            image 'nikolaik/python-nodejs' 
-            args '-p 3000:3000' 
-        }
-    }
+    agent any
     environment {
         PORT = 3001
         DATABASE_URL = "mongodb://mongo:27017/web_class"
