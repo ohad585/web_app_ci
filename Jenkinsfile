@@ -14,22 +14,23 @@ pipeline {
         REDIS_HOST = "redis_db"
     }
     stages {
-        stage('Build Backend') { 
+        stage('Build&Test Backend') { 
             steps {
-                dir('backend') {
-                    sh 'ls'
-                    sh 'npm install' 
-                }
+                // dir('backend') {
+                //     sh 'ls'
+                //     sh 'npm install' 
+                // }
+                sh 'docker-compose up --build'
             }
         }
-        stage('Test  Backend') {
-            steps {
-                dir('backend'){
-                    sh "chmod +x -R ./jenkins/scripts/*.sh"
-                    sh './jenkins/scripts/test.sh'
-                }
-            }
-        }
+        // stage('Test  Backend') {
+        //     steps {
+        //         dir('backend'){
+        //             sh "chmod +x -R ./jenkins/scripts/*.sh"
+        //             sh './jenkins/scripts/test.sh'
+        //         }
+        //     }
+        // }
         stage('Deliver  Backend') { 
             steps {
                 dir('backend'){
