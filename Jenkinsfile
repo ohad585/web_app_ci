@@ -15,6 +15,8 @@ pipeline {
                 //     sh 'ls'
                 //     sh 'npm install' 
                 // }
+                sh 'docker version'
+                sh 'docker compose version'
                 sh 'docker-compose up --build'
             }
         }
