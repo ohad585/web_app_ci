@@ -7,10 +7,28 @@ import jwt from "jsonwebtoken"
 import {createClient} from "redis"
 import { createAdapter } from "@socket.io/redis-adapter";
 
+var REDIS_URL
+const REDIS_HOST = process.env.REDIS_HOST
+if(REDIS_HOST){
+    REDIS_URL = "redis://" + process.env.REDIS_HOST + ":" + "6379"
+}else{
+    REDIS_URL =  process.env.REDIS_URL
+}
+console.log('====================================');
+console.log(REDIS_URL);
+console.log('====================================');
 let socketServer:Server
-const pubClient = createClient({ url: "redis://localhost:6379" });
+const pubClient = createClient({ 
+    url: REDIS_URL
+ });
 const subClient = pubClient.duplicate();
 
+pubClient.on("error", (err) => {
+    console.log(err);
+  });
+subClient.on("error", (err) => {
+  console.log(err);
+});
 export const closeSocketServer = async ()=>{
     await pubClient.disconnect()
     await subClient.disconnect()

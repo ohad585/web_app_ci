@@ -1,20 +1,27 @@
-  version: '3.8'
+  version: '3'
   services:
-    jenkins:
-      build:
-        dockerfile: Dockerfile
-        context: .
-      privileged: true
-      user: root
-      ports:
-       - 8080:8080
-       - 50000:50000
-      container_name: jenkins
-      volumes:
-        - /home/ohadshalom/jenkins_compose/jenkins_configuration:/var/jenkins_home
-        - /var/run/docker.sock:/var/run/docker.sock
     mongo:
       image: mongo
       restart: always
       ports:
         - 27017:27017
+    redis_db:
+      image: redis
+      restart: always
+      ports:
+        - 6379:6379
+      container_name: "redis_db"
+    backend:
+      build:
+        dockerfile: Dockerfile
+        context: ./backend
+      privileged: true
+      user: root
+      ports:
+       - 3001:3001
+      container_name: backend
+      environment:
+        - REDIS_HOST=redis_db
+      links:
+        - "redis_db"
+    

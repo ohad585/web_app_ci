@@ -7,10 +7,11 @@ pipeline {
     }
     environment {
         PORT = 3001
-        DATABASE_URL = "mongodb://127.0.0.1:27017/web_class"
+        DATABASE_URL = "mongodb://mongo:27017/web_class"
         ACCESS_TOKEN_SECRET = "7389389fy23hfh238hf9hf"
         REFRESH_TOKEN_SECRET = "234kjh23b4kb324kjbn42"
         TOKEN_EXPIRATION = "24h"
+        REDIS_HOST = "redis_db"
     }
     stages {
         stage('Build Backend') { 
