@@ -15,11 +15,7 @@ pipeline {
                 //     sh 'ls'
                 //     sh 'npm install' 
                 // }
-                sh 'docker ps'
-                sh 'echo --------------'
-                sh 'docker compose version'
-                // sh 'echo --------------'
-                // sh 'docker-compose up --build'
+                sh 'docker-compose up --build'
             }
         }
         // stage('Test  Backend') {
