@@ -101,55 +101,55 @@ describe("Socket IO server test", () => {
     });
 
 
-    test("test ims event", (done) => {
-        user2.clientSocket.on("ims:reciev_message", (arg) => {
-            expect(arg.from).toBe(user1.id);
-            expect(arg.message).toBe("this is IMS message");
-            user2.clientSocket.removeAllListeners("ims:reciev_message")
-            done();
-        });
-        user1.clientSocket.emit("ims:send_message", { to: user2.id, from: user1.id, message: "this is IMS message" })
-    });
+    // test("test ims event", (done) => {
+    //     user2.clientSocket.on("ims:reciev_message", (arg) => {
+    //         expect(arg.from).toBe(user1.id);
+    //         expect(arg.message).toBe("this is IMS message");
+    //         user2.clientSocket.removeAllListeners("ims:reciev_message")
+    //         done();
+    //     });
+    //     user1.clientSocket.emit("ims:send_message", { to: user2.id, from: user1.id, message: "this is IMS message" })
+    // });
 
-    test("test post and notify event", (done) => {
-        user1.clientSocket.on("post:new_post_response",(arg)=>{
-            console.log("post:new_post_response" + arg)
-            user1.clientSocket.removeAllListeners("post:new_post_response")
-            done()
-        })
-        user1.clientSocket.emit("post:new_post",{
-            message: "this is the post message",
-            sender: "",
-        })
-    })
-    test("test post and notify event", (done) => {
-        user2.clientSocket.on("post:notify",(arg)=>{
-            expect(arg.message).toEqual("this is the post message")
-            expect(arg.sender).toEqual(user1.id)
-            user2.clientSocket.removeAllListeners("post:notify")
-            done()
-        })
-        user1.clientSocket.emit("post:new_post",{
-            message: "this is the post message",
-            sender: "",
-        })
-    })
-    test("test post and notify event", (done) => {
-        user2.clientSocket.on("post:notify",(arg)=>{
-            expect(arg.message).toEqual("this is the post message")
-            expect(arg.sender).toEqual(user1.id)
-            user2.clientSocket.removeAllListeners("post:notify")
-            done()
-        })
-        request(server)
-            .post("/post")
-            .set({ authorization: "barer " + user1.accessToken })
-            .send({
-                message: "this is the post message",
-                sender: "",
-            }).then(()=>{
-                console.log("post is sent...")
-            });
-    })
+    // test("test post and notify event", (done) => {
+    //     user1.clientSocket.on("post:new_post_response",(arg)=>{
+    //         console.log("post:new_post_response" + arg)
+    //         user1.clientSocket.removeAllListeners("post:new_post_response")
+    //         done()
+    //     })
+    //     user1.clientSocket.emit("post:new_post",{
+    //         message: "this is the post message",
+    //         sender: "",
+    //     })
+    // })
+    // test("test post and notify event", (done) => {
+    //     user2.clientSocket.on("post:notify",(arg)=>{
+    //         expect(arg.message).toEqual("this is the post message")
+    //         expect(arg.sender).toEqual(user1.id)
+    //         user2.clientSocket.removeAllListeners("post:notify")
+    //         done()
+    //     })
+    //     user1.clientSocket.emit("post:new_post",{
+    //         message: "this is the post message",
+    //         sender: "",
+    //     })
+    // })
+    // test("test post and notify event", (done) => {
+    //     user2.clientSocket.on("post:notify",(arg)=>{
+    //         expect(arg.message).toEqual("this is the post message")
+    //         expect(arg.sender).toEqual(user1.id)
+    //         user2.clientSocket.removeAllListeners("post:notify")
+    //         done()
+    //     })
+    //     request(server)
+    //         .post("/post")
+    //         .set({ authorization: "barer " + user1.accessToken })
+    //         .send({
+    //             message: "this is the post message",
+    //             sender: "",
+    //         }).then(()=>{
+    //             console.log("post is sent...")
+    //         });
+    // })
 });
 

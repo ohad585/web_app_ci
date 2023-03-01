@@ -30,4 +30,7 @@
         - NODE_ENV="development"
       links:
         - "redis_db"
+      depends_on:
+       - "redis_db"
+       - "mongo"
     
