@@ -9,6 +9,6 @@ COPY ./src .
 COPY ./jenkins .
 COPY ./jest.config.js .
 COPY ./tsconfig.json .
-COPY ./.env .
+# COPY ./.env .
 
 CMD [ "npm","run","test" ]
