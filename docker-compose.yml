@@ -15,19 +15,17 @@
       build:
         dockerfile: Dockerfile
         context: ./backend
-      privileged: true
-      user: root
       ports:
        - 3001:3001
       container_name: backend
       environment:
-        - REDIS_HOST = redis_db
-        - PORT = 3001
-        - DATABASE_URL = "mongodb://mongo:27017/web_class"
-        - ACCESS_TOKEN_SECRET = "7389389fy23hfh238hf9hf"
-        - REFRESH_TOKEN_SECRET = "234kjh23b4kb324kjbn42"
-        - TOKEN_EXPIRATION = "24h"
-        - NODE_ENV="development"
+        - REDIS_HOST=redis_db
+        - PORT=3001
+        - DATABASE_URL=mongodb://mongo:27017/web_class
+        - ACCESS_TOKEN_SECRET="7389389fy23hfh238hf9hf"
+        - REFRESH_TOKEN_SECRET="234kjh23b4kb324kjbn42"
+        - TOKEN_EXPIRATION=24h
+        - NODE_ENV=development
       links:
         - "redis_db"
       depends_on:

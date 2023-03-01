@@ -7,6 +7,9 @@ dotenv.config();
 console.log("seerver is starting..");
 
 import mongoose from "mongoose";
+console.log('====================================');
+console.log(process.env.DATABASE_URL);
+console.log('====================================');
 mongoose.connect(process.env.DATABASE_URL);
 
 const db = mongoose.connection;
