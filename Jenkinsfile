@@ -11,7 +11,7 @@ pipeline {
     stages {
         stage('Build&Test Backend') { 
             steps {
-                sh "chmod +x -R ./jenkins/scripts/*.sh"
+                sh "chmod +x -R .backend/jenkins/scripts/*.sh"
                 // dir('backend') {
                 //     sh 'ls'
                 //     sh 'npm install' 
