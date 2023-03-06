@@ -11,7 +11,7 @@ pipeline {
     stages {
         stage('Build&Test App') { 
             steps {
-                sh 'docker compose up -f docker-compose-dev.yml --build --abort-on-container-exit --exit-code-from backend'
+                sh 'docker compose -f docker-compose-dev.yml up --build --abort-on-container-exit --exit-code-from backend'
             }
         }
         stage('Deliver  Backend') { 
