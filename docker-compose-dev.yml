@@ -13,7 +13,7 @@
       container_name: "redis_db"
     backend:
       build:
-        dockerfile: Dockerfile
+        dockerfile: Dockerfile.dev
         context: ./backend
       ports:
        - 3001:3001
@@ -29,16 +29,6 @@
       links:
         - "redis_db"
       depends_on:
-       - redis_db
-       - mongo
-    frontend:
-      build:
-        dockerfile: Dockerfile
-        context: ./frontend
-      ports:
-        - 19000:19000
-        - 19006:19006
-      container_name: frontend
-      depends_on:
-        - backend
+       - "redis_db"
+       - "mongo"
     

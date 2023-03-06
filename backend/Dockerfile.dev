@@ -11,4 +11,4 @@ COPY ./jest.config.js .
 COPY ./tsconfig.json .
 # COPY ./.env .
 
-CMD [ "npm","start" ]
+CMD [ "npm","run","test" ]
