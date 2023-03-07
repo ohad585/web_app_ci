@@ -9,12 +9,12 @@ pipeline {
         REDIS_HOST = "redis_db"
     }
     stages {
-        stage('Build&Test App') { 
+        stage('Build And Test Backend') { 
             steps {
                 sh 'docker compose -f docker-compose-dev.yml up --build --abort-on-container-exit --exit-code-from backend'
             }
         }
-        stage('Deliver  Backend') { 
+        stage('Build And Run App') { 
             steps {
                 sh 'docker compose up --build'
                 input message: 'Finished using the web site? (Click "Proceed" to continue)' 
