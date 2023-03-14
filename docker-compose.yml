@@ -10,7 +10,7 @@
       restart: always
       ports:
         - 6379:6379
-      container_name: "redis_db"
+      container_name: redis_db
     backend:
       build:
         dockerfile: Dockerfile
@@ -27,7 +27,7 @@
         - TOKEN_EXPIRATION=24h
         - NODE_ENV=development
       links:
-        - "redis_db"
+        - redis_db
       depends_on:
        - redis_db
        - mongo
@@ -37,8 +37,13 @@
         context: ./frontend
       ports:
         - 19000:19000
+        - 19001:19001
+        - 19002:19002
         - 19006:19006
       container_name: frontend
       depends_on:
         - backend
+      environment:
+         - EXPO_DEVTOOLS_LISTEN_ADDRESS=0.0.0.0
+         - REACT_NATIVE_PACKAGER_HOSTNAME=172.20.10.2
     

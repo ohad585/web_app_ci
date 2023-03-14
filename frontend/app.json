@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "frontend",
-    "slug": "fullstack-course-final-project",
+    "slug": "web-app-cicd",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
