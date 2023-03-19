@@ -16,7 +16,7 @@ pipeline {
         }
         stage('Build And Run App') { 
             steps {
-                sh 'docker compose up --build'
+                sh 'docker compose up --build -d'
                 input message: 'Finished using the web site? (Click "Proceed" to continue)' 
                 sh 'docker compose down'
             }
